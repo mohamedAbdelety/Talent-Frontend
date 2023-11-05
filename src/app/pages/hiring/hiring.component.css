@@ -1,0 +1,31 @@
+.favourite-list{
+  margin-bottom: 2rem;
+}
+.profile-header{
+  margin-bottom: 1rem;
+}
+h5{
+  margin-top: 0.5rem;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/**/
+form{
+  margin-bottom: 4rem;
+}
+textarea,button{
+  margin-top: 1rem;
+}
+::ng-deep .iti {
+  width: 100% !important;
+}
+

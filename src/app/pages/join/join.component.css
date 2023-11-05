@@ -1,0 +1,291 @@
+
+.contact-entry {
+  margin-bottom: 2rem;
+}
+
+.contact-entry .form {
+  margin-top: 0;
+  padding-top: 5px;
+}
+
+.contact-entry .wr-ads {
+  height: 300px;
+}
+
+#big-contact-map,
+#search-full-screen-map {
+  display: block;
+  width: 100%;
+  height: 90vh;
+}
+
+.contact-info-window {
+  width: 320px;
+  padding: 45px 40px;
+  background-color: #171717;
+}
+
+.contact-info-window .logo {
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.contact-info-window .info {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+
+.contact-info-window .info:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-window .info i {
+  display: inline-block;
+  width: 25px;
+  font-size: 16px;
+  color: white;
+}
+/* steper */
+.stepper {
+  padding: 50px 35px 10px 35px;
+}
+
+.container .form-outer {
+  margin-top: 80px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container .form-outer form {
+  display: flex;
+  width: 400%;
+}
+
+.form-outer form .page {
+  width: 25%;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.form-outer form .page .title {
+  text-align: left;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.form-outer form .page .field {
+  width: 330px;
+  height: 45px;
+  margin: 45px 0;
+  display: flex;
+  position: relative;
+}
+
+form .page .field button {
+  width: 100%;
+  height: calc(100% + 5px);
+  border: none;
+  background: #ea1d5e;
+  margin-top: -20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
+
+form .page .field button:hover {
+  background: #000;
+}
+
+form .page .btns button {
+  margin-top: -20px!important;
+}
+
+form .page .btns button.prev {
+  margin-right: 3px;
+  font-size: 17px;
+}
+
+form .page .btns button.next {
+  margin-left: 3px;
+}
+
+.container .progress-bar {
+  display: flex;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.container .progress-bar .step {
+  width: 100%;
+  position: relative;
+}
+
+.container .progress-bar .step p {
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.progress-bar .step .bullet {
+  display: inline-block;
+  position: relative;
+  transition: 0.2s;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+}
+
+.progress-bar .step .bullet.active {
+  color: #ea1d5e;
+}
+
+.progress-bar .step .bullet:before,
+.progress-bar .step .bullet:after {
+  position: absolute;
+  content: '';
+  bottom: 10px;
+  right: -60px;
+  height: 3px;
+  width: 44px;
+  background: #262626;
+}
+
+.progress-bar .step .bullet.active:after {
+  background: #ea1d5e;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 0.3s linear forwards;
+}
+
+@keyframes animate {
+  100% {
+      transform: scaleX(1);
+  }
+}
+
+.progress-bar .step:last-child .bullet:before,
+.progress-bar .step:last-child .bullet:after {
+  display: none;
+}
+
+.progress-bar .step p.active {
+  color: #ea1d5e;
+  transition: 0.2s linear;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.post-content h2 {
+    margin: 40px 0 20px;
+    font-size: 24px;
+}
+
+.post-content ul {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.post-content li {
+    margin-bottom: 15px;
+    line-height: 26px;
+}
+
+.post-content li:last-child {
+    margin-bottom: 0;
+}
+
+/* lines */
+.lines{
+  text-align: center;
+}
+
+.lines::before,
+.lines::after {
+    content: '';
+    position: relative;
+    display: inline-block;
+    width: 57px;
+    height: 1px;
+    top: -7px;
+    background-color: #ea1d5e;
+}
+
+.lines::before {
+    margin-right: 25px;
+}
+
+.lines::after {
+    margin-left: 25px;
+}
+
+
+.custom-step{
+  padding-top: 1rem;
+}
+.custom-step div{
+  margin-bottom: .5rem;
+}
+.row-2{
+  margin-top: 2rem;
+}
+::ng-deep .iti{
+  width: 100% !important;
+  background-color: #000;
+}
+button{
+  margin-right: .4rem !important;
+}
+/* upload */
+.label {
+  display: block;
+  text-align: center;
+  color: #ccc;
+  height: 270px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+}
+label > div{
+  margin-top: 90px;
+}
+.label i {
+  font-size: 40px;
+}
+.label h3 {
+  font-size: 23px;
+  margin: 15px 0;
+}
+.default-file-input {
+  display: none;
+}
+.p3-upload {
+  border: 2px solid #f7f3f3;
+}
+.additional-imgs-label{
+  margin-bottom: 0.25rem;
+  color: #999;
+}
+.additional-container{
+  margin-top: 1rem;
+}
+.additional-container img{
+  width: 85px;
+  height: 85px;
+  margin-right: 0.5rem;
+}
+
+

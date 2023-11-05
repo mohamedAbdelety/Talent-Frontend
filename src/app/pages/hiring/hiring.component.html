@@ -1,0 +1,56 @@
+<app-breadcrumb [pageName]="'Hiring'"></app-breadcrumb>
+<div class="container">
+  <div *ngIf="data.length > 0">
+    <form [formGroup]="hiringFormGroup" class="row">
+        <div class="col-md-4">
+          <input formControlName="name" type="text" class="form-control" placeholder="Your Name *">
+          <div *ngIf="hiringFormGroup.get('name')?.touched" class="custom-valid" [class.invalid]="hiringFormGroup.get('name')?.invalid">
+            {{hiringFormGroup.get('name')?.valid ? validMsg : invalidMsg}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <input formControlName="email" type="email" class="form-control" placeholder="Your Email *">
+          <div *ngIf="hiringFormGroup.get('email')?.touched" class="custom-valid" [class.invalid]="hiringFormGroup.get('email')?.invalid">
+            {{hiringFormGroup.get('email')?.valid ? validMsg : invalidMsg}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <input (hasError)="onNumberChange($event)" formControlName="phone" ng2TelInput type="text" class="form-control phone-input">
+          <div *ngIf="hiringFormGroup.get('phone')?.touched" class="custom-valid" [class.invalid]="hiringFormGroup.get('phone')?.invalid || !validPhone">
+            {{hiringFormGroup.get('phone')?.valid && validPhone ? validMsg : invalidMsg}}
+          </div>
+        </div>
+        <div class="col-md-12">
+          <textarea formControlName="description" placeholder="Description *" class="form-control" rows="4"></textarea>
+          <div *ngIf="hiringFormGroup.get('description')?.touched" class="custom-valid" [class.invalid]="hiringFormGroup.get('description')?.invalid">
+            {{hiringFormGroup.get('description')?.valid ? validMsg : invalidMsg}}
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button class="form-control" [disabled]="!hiringFormGroup.valid || !validPhone" (click)="onSubmit()" color="primary" mat-raised-button type="submit">
+            Add Contract
+          </button>
+        </div>
+
+    </form>
+  </div>
+  <div class="favourite-list row">
+    <div *ngFor="let p of data; let i = index" class="col-md-4 mb-4">
+      <mat-card>
+        <mat-card-content>
+          <div class="profile-header row">
+            <div class="col-3 float-start">
+              <img [src]="getImgSrc(i)" alt="image">
+            </div>
+            <div class="col float-end">
+              <h5>{{p.name}}</h5>
+            </div>
+            <button title="Delete" class="btn btn-danger mt-2" (click)="delete(i)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

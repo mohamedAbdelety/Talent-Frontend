@@ -1,0 +1,14 @@
+<div class="dialog-header">Upload Stars File</div>
+<div class="img-container">
+    <img src="../../../assets/imgs/upload-dialog.png" alt="upload dialog">
+</div>
+<section fxLayout="row" fxLayoutAlign="space-around center">
+    <img class="excel-img" src="../../../assets/Icons/xls 1.svg" alt="excel">
+    <div fxFlex="90">
+        <div fxLayout="column" fxLayoutAlign="start start">
+            <p class="title">{{data.fileName}}</p>
+            <progress min="1" max="100" [value]="data.progress"></progress>
+        </div>
+    </div>
+    <img class="close-img" (click)="onExit()" [src]="stopIconUrl" alt="close">
+</section>

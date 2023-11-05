@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <div class="profile-header row">
+      <div class="col-sm-3">
+        <img [src]="starImg" alt="">
+      </div>
+      <div class="col-sm-9">
+        <h5>
+          <a target="_blank" [href]="'https://www.instagram.com/'+star.userName">{{star.name}}</a>
+        </h5>
+      </div>
+
+    </div>
+    <div class="statistics row">
+      <div class="col-sm-4">
+        <strong>Followers</strong>
+        <p>{{star.followers}}</p>
+      </div>
+      <div class="col-sm-4">
+        <strong>Uploads</strong>
+        <p>{{star.uploads}}</p>
+      </div>
+      <div class="col-sm-4">
+        <strong>Following</strong>
+        <p>{{star.following}}</p>
+      </div>
+    </div>
+    <button class="col-sm-12" title="Hire" [disabled]="star.isPrefered" mat-raised-button color="primary" (click)="makeDeal()">
+      <i class="fa fa-clipboard"></i>
+    </button>
+  </mat-card-content>
+</mat-card>

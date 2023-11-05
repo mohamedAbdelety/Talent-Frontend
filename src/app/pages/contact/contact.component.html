@@ -1,0 +1,38 @@
+<app-breadcrumb [pageName]="'Contact Us'"></app-breadcrumb>
+
+<section class="container">
+  <div class="row post-content entry-text">
+    <div class="col-md-6">
+      <p>
+        Have any questions or feedback ? We would love to hear from you! Reach out to our team at [email protected] or fill out the contact form on our website. We're here to assist you every step of the way.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <form [formGroup]="contactFormGroup">
+        <div class="row">
+          <div class="col-md-6">
+            <input formControlName="name" type="text" class="form-control" placeholder="Your Name *">
+            <div *ngIf="contactFormGroup.get('name')?.touched" class="custom-valid" [class.invalid]="contactFormGroup.get('name')?.invalid">
+              {{contactFormGroup.get('name')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input formControlName="email" type="email" class="form-control" placeholder="Your Email *">
+            <div *ngIf="contactFormGroup.get('email')?.touched" class="custom-valid" [class.invalid]="contactFormGroup.get('email')?.invalid">
+              {{contactFormGroup.get('email')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <textarea formControlName="message" placeholder="Message *" class="form-control" rows="4"></textarea>
+            <div *ngIf="contactFormGroup.get('message')?.touched" class="custom-valid" [class.invalid]="contactFormGroup.get('message')?.invalid">
+              {{contactFormGroup.get('message')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button class="form-control" [disabled]="!contactFormGroup.valid" (click)="onSubmit()" color="primary" mat-raised-button type="submit">Send Message</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

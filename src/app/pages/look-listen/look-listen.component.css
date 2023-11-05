@@ -1,0 +1,19 @@
+.table-div{
+  margin-bottom: 2rem;
+}
+.talent{
+  text-align: center;
+  color: #3487d4;
+  cursor: pointer;
+}
+img{
+  height:300px;
+  width: 100%;
+}
+.talent-name{
+  font-size: 14px;
+  margin-top: 10px;
+}
+.talent-filter{
+  margin-bottom: 1.5rem;
+}

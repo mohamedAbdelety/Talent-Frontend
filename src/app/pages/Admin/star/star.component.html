@@ -1,0 +1,66 @@
+<app-breadcrumb [pageName]="'Stars'"></app-breadcrumb>
+
+<div class="container">
+  <div class="row">
+    <div class="col" style="padding-right: 0px !important;">
+      <div class="mb-3 float-end">
+        <input type="file"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        style="display: none;" #uploadBtn (change)="onUploadFile($event)">
+        <button (click)="uploadBtn.click()" mat-raised-button color="primary">
+          Upload Stars
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container table-div">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="followers">
+      <th mat-header-cell *matHeaderCellDef> Followers </th>
+      <td mat-cell *matCellDef="let element"> {{element.followers}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="following">
+      <th mat-header-cell *matHeaderCellDef> Following </th>
+      <td mat-cell *matCellDef="let element"> {{element.following}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="uploads">
+      <th mat-header-cell *matHeaderCellDef> Uploads </th>
+      <td mat-cell *matCellDef="let element"> {{element.uploads}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button title="View" class="btn btn-info me-1 mb-1" (click)="onView(element)">
+           <i class="fa fa-eye" style="color:#fff"></i>
+        </button>
+        <button *ngIf="!element.isApproved" title="Approve" class="btn btn-success me-1 mb-1" (click)="reverseStatus(element.id)">
+          <i class="fa fa-check"></i>
+        </button>
+        <button *ngIf="element.isApproved" title="Disapprove" class="btn btn-warning me-1 mb-1" (click)="reverseStatus(element.id)">
+          <span style="color: #fff;">x</span>
+        </button>
+        <button title="Delete" class="btn btn-danger mb-1" (click)="delete(element.id)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

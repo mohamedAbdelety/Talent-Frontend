@@ -1,0 +1,23 @@
+<h4 mat-dialog-title>{{talent.name}}</h4>
+<div class="row">
+  <div class="col-md-6">
+    <img [src]="imagePaths[selectedIndex]">
+    <div>
+        <img class="img-thumbnail carsol-img" *ngFor="let img of imagePaths; let i = index" [src]="img" [class.active-img]="selectedIndex == i" (click)="selectedIndex = i">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="details-part">Ethnicity : {{talent.ethnicity}}</div>
+    <div class="details-part">Hair Color : {{talent.hair}}</div>
+    <div class="details-part">Eye Color : {{talent.eye}}</div>
+    <div class="details-part">Body : {{talent.body}}</div>
+    <div class="details-part">Weight : {{talent.weight}} kg</div>
+    <div class="details-part">Height : {{talent.height}} cm</div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="hireBtn" [disabled]="talent.isPrefered" mat-raised-button color="primary" (click)="makeDeal()">
+    <i class="fa fa-clipboard"></i> Hire
+  </button>
+  <button mat-raised-button color="accent" (click)="close()">Close</button>
+</div>

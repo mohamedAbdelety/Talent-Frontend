@@ -1,0 +1,30 @@
+h4{
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 3rem;
+}
+.details-part{
+  border-top: 1px solid #cccccc;
+  height: 5px;
+  margin-top: 14px;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  font-style: italic;
+}
+img{
+  width: 100%;
+  height: 340px;
+}
+.carsol-img{
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  opacity: .5;
+}
+.active-img{
+  opacity: 1;
+  cursor:auto;
+}

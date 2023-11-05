@@ -1,0 +1,18 @@
+<h4 mat-dialog-title>{{star.name}}</h4>
+<div class="row">
+  <div class="col-md-12">
+    <img [src]="images[selectedIndex]">
+    <div>
+        <img class="img-thumbnail carsol-img" *ngFor="let img of images; let i = index" [src]="img" [class.active-img]="selectedIndex == i" (click)="selectedIndex = i">
+    </div>
+  </div>
+</div>
+
+
+<div mat-dialog-actions class="col mt-auto">
+  <button *ngIf="hireBtn" [disabled]="star.isPrefered" mat-raised-button color="primary" (click)="makeDeal()">
+    <i class="fa fa-clipboard"></i> Hire
+  </button>
+  <button mat-raised-button color="accent" (click)="close()">Close</button>
+</div>
+

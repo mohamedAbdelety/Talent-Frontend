@@ -1,0 +1,51 @@
+
+<header class="header">
+  <div class="container">
+      <div class="header-inner">
+          <a routerLink="/" class="site-logo">
+              <h1 class="site-logo-title">Devon</h1>
+              <h1 class="site-logo-text">model agency</h1>
+          </a>
+          <div class="navigation-wr">
+              <nav class="navigation">
+                  <ul>
+                    <li>
+                      <a routerLink="/look" routerLinkActive="active">Our Talent</a>
+                    </li>
+                    <li>
+                      <a routerLink="/starts" routerLinkActive="active">Stars</a>
+                    </li>
+                    <li>
+                      <a routerLink="/join" routerLinkActive="active">Join</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a [ngClass]="{'active': aboutActive.isActive || contactActive.isActive }">About</a>
+                        <span class="sub-menu-toggle"></span>
+                        <ul class="sub-menu">
+                            <li [ngClass]="{'current-menu-item': aboutActive.isActive}"><a routerLink="/about" routerLinkActive #aboutActive="routerLinkActive">About us</a></li>
+                            <li [ngClass]="{'current-menu-item': contactActive.isActive}"><a routerLink="/contact" routerLinkActive #contactActive="routerLinkActive">Contact us</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <a [ngClass]="{'active': talentActive.isActive || starActive.isActive || hiringActive.isActive }">Admin Dashboard</a>
+                      <span class="sub-menu-toggle"></span>
+                      <ul class="sub-menu">
+                        <li [ngClass]="{'current-menu-item': talentActive.isActive}">
+                          <a routerLink="/admin/talent" routerLinkActive #talentActive="routerLinkActive">Manage Talents</a>
+                        </li>
+                        <li [ngClass]="{'current-menu-item': starActive.isActive}">
+                          <a routerLink="/admin/star" routerLinkActive #starActive="routerLinkActive">Manage Stars</a>
+                        </li>
+                        <li [ngClass]="{'current-menu-item': hiringActive.isActive}">
+                          <a routerLink="/admin/hiring" routerLinkActive #hiringActive="routerLinkActive">Manage Hiring</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li (click)="reset()">Reset DB (Testing)</li>
+                  </ul>
+              </nav>
+          </div>
+          <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+  </div>
+</header>

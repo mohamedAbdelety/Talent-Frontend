@@ -1,0 +1,228 @@
+<app-breadcrumb [pageName]="'Join'"></app-breadcrumb>
+<div class="contact-entry container">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="post-content">
+              <h2 class="section-title lines">
+                  To be considered as talent, please complete the following form
+              </h2>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <mat-horizontal-stepper #stepper linear="true">
+    <form [formGroup]="talentFormGroup">
+      <mat-step [stepControl]="getpersonalForm()" label="Personal">
+        <div formGroupName="personal" class="custom-step">
+          <div class="row">
+            <div class="col-md-4">
+              <input formControlName="name" type="text" class="form-control" placeholder="Full Name *">
+              <div *ngIf="talentFormGroup.get('personal.name')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.name')?.invalid">
+                {{talentFormGroup.get('personal.name')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <input formControlName="email" type="email" class="form-control" placeholder="Email *">
+              <div *ngIf="talentFormGroup.get('personal.email')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.email')?.invalid">
+                {{talentFormGroup.get('personal.email')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <input (hasError)="onNumberChange($event)" formControlName="phone" ng2TelInput type="text" class="form-control phone-input">
+              <div *ngIf="talentFormGroup.get('personal.phone')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.phone')?.invalid || !validPhone">
+                {{talentFormGroup.get('personal.phone')?.valid && validPhone ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" formControlName="gender">
+                <option value="..." disabled>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <div *ngIf="talentFormGroup.get('personal.gender')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.gender')?.invalid">
+                {{talentFormGroup.get('personal.gender')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <input formControlName="birthdate" type="date" class="form-control" placeholder="Full Name *">
+              <div *ngIf="talentFormGroup.get('personal.birthdate')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.birthdate')?.invalid">
+                {{talentFormGroup.get('personal.birthdate')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="col-md-6">
+              <label class="form-label">Height ( {{talentFormGroup.get('personal.height')?.value}} cm )</label>
+              <input formControlName="height" type="range" class="form-range" min="140" max="220">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Weight ( {{talentFormGroup.get('personal.weight')?.value}} kg )</label>
+              <input formControlName="weight" type="range" class="form-range" min="40" max="180">
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" formControlName="body">
+                <option value="..." disabled>Body Type</option>
+                <option *ngFor="let enum of iterateEnum(BodyTypeEnum)" [value]="enum">
+                  {{enum}}
+                </option>
+              </select>
+              <div *ngIf="talentFormGroup.get('personal.body')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.body')?.invalid">
+                {{talentFormGroup.get('personal.body')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" formControlName="ethnicity">
+                <option value="..." disabled>Ethnicity</option>
+                <option *ngFor="let enum of iterateEnum(EthnicityTypeEnum)" [value]="enum">
+                  {{enum}}
+                </option>
+              </select>
+              <div *ngIf="talentFormGroup.get('personal.ethnicity')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.ethnicity')?.invalid">
+                {{talentFormGroup.get('personal.ethnicity')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" formControlName="hair">
+                <option value="..." disabled>Hair Color</option>
+                <option *ngFor="let enum of iterateEnum(ColorTypeEnum)" [value]="enum">
+                  {{enum}}
+                </option>
+              </select>
+              <div *ngIf="talentFormGroup.get('personal.hair')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.hair')?.invalid">
+                {{talentFormGroup.get('personal.hair')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" formControlName="eye">
+                <option value="..." disabled>Eye Color</option>
+                <option *ngFor="let enum of iterateEnum(ColorTypeEnum)" [value]="enum">
+                  {{enum}}
+                </option>
+              </select>
+              <div *ngIf="talentFormGroup.get('personal.eye')?.touched || firstNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('personal.eye')?.invalid">
+                {{talentFormGroup.get('personal.eye')?.valid ? validMsg : invalidMsg}}
+              </div>
+            </div>
+            <div>
+              <button (click)="firstNextClicked = true" color="primary" mat-raised-button matStepperNext>
+                Next <i class="fa fa-forward"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="getexperienceForm()" label="Experience">
+        <div formGroupName="experience" class="custom-step row">
+          <div class="col-md-12">
+            <textarea formControlName="education" placeholder="Education background (acting schools, workshops, etc.) *" class="form-control" rows="3"></textarea>
+            <div *ngIf="talentFormGroup.get('experience.education')?.touched || secondNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('experience.education')?.invalid">
+              {{talentFormGroup.get('experience.education')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <textarea formControlName="previousProject" placeholder="Previous projects and roles *" class="form-control" rows="3"></textarea>
+            <div *ngIf="talentFormGroup.get('experience.previousProject')?.touched || secondNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('experience.previousProject')?.invalid">
+              {{talentFormGroup.get('experience.previousProject')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <textarea formControlName="award" placeholder="Awards and achievements *" class="form-control" rows="3"></textarea>
+            <div *ngIf="talentFormGroup.get('experience.award')?.touched || secondNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('experience.award')?.invalid">
+              {{talentFormGroup.get('experience.award')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <textarea formControlName="training" placeholder="Training and certifications *" class="form-control" rows="3"></textarea>
+            <div *ngIf="talentFormGroup.get('experience.training')?.touched || secondNextClicked" class="custom-valid" [class.invalid]="talentFormGroup.get('experience.training')?.invalid">
+              {{talentFormGroup.get('experience.training')?.valid ? validMsg : invalidMsg}}
+            </div>
+          </div>
+
+          <div>
+            <button color="accent" mat-raised-button matStepperPrevious>
+              <i class="fa fa-backward"></i> Prev
+            </button>
+            <button (click)="secondNextClicked = true" color="primary" mat-raised-button matStepperNext>
+              Next <i class="fa fa-forward"></i>
+            </button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="getUploadForm()" label="Uploads">
+        <div formGroupName="uploads" class="custom-step row">
+          <div  class="col-md-3">
+            <label [style]="'background-image: url('+uploadedImgUrl+');'" class="label p3-upload">
+              <div>
+                <i class="fa fa-upload"></i>
+                <h3 class="dynamic-message"> Profile Picture *</h3>
+                <input formControlName="img" type="file" (change)="preview($event)" class="default-file-input"/>
+              </div>
+            </label>
+          </div>
+          <div>
+            <div class="col-md-6">
+                <label class="additional-imgs-label" for="additional-imgs">Additional Images (Optional)</label>
+                <input id="additional-imgs" class="form-control" type="file" (change)="onFilesSelected($event)" multiple>
+                <div class="additional-container">
+                    <img class="img-thumbnail" *ngFor="let image of uploadedImageUrls" [src]="image" alt="Uploaded Image">
+                </div>
+            </div>
+          </div>
+          <div>
+            <button color="accent" mat-raised-button matStepperPrevious>
+              <i class="fa fa-backward"></i> Prev
+            </button>
+            <button (click)="thirdNextClicked = true" color="primary" mat-raised-button matStepperNext>
+              Next <i class="fa fa-forward"></i>
+            </button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="getAdditionalForm()" label="Additional">
+        <div formGroupName="additional" class="custom-step">
+          <div formArrayName="socailMedias">
+            <div *ngFor="let obj of socailMediaFormArr.controls; let i = index; let l = last" [formGroupName]="i" class="row">
+                <div class="col-md-3">
+                  <select class="form-select" formControlName="website">
+                    <option value="..." disabled>Website</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="linkedin">Linkedin</option>
+                  </select>
+                  <div *ngIf="l && socailMediaFormArr.errors?.hasOwnProperty('duplicates'); else elseBlock" class="custom-valid" [class.invalid]="socailMediaFormArr.invalid">
+                    You add this website alredy
+                  </div>
+                  <ng-template #elseBlock>
+                    <div *ngIf="obj.get('website')?.touched" class="custom-valid" [class.invalid]="obj.get('website')?.invalid">
+                      {{obj.get('website')?.valid ? validMsg : invalidMsg}}
+                    </div>
+                  </ng-template>
+                </div>
+                <div class="col-md-8">
+                  <input formControlName="link" type="text" class="form-control" placeholder="Profile user name *">
+                  <div *ngIf="obj.get('link')?.touched" class="custom-valid" [class.invalid]="obj.get('link')?.invalid">
+                    {{obj.get('link')?.valid ? validMsg : invalidMsg}}
+                  </div>
+                </div>
+                <div class="col-md-1">
+                    <button color="warn" mat-raised-button (click)="removeWebsite(i)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <button [disabled]="!socailMediaFormArr.valid || socailMediaFormArr.length == 4" color="primary" mat-raised-button (click)="AddSocailProfile()">+ Add Another Profile</button>
+          </div>
+          <br>
+          <div>
+            <button (click)="thirdNextClicked = true" color="accent" mat-raised-button matStepperPrevious>
+              <i class="fa fa-backward"></i> Prev
+            </button>
+            <button [disabled]="!talentFormGroup.valid || !validPhone" (click)="onSubmit()" color="primary" mat-raised-button type="submit">Add</button>
+          </div>
+        </div>
+      </mat-step>
+    </form>
+  </mat-horizontal-stepper>
+</div>

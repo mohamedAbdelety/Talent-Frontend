@@ -1,0 +1,17 @@
+<app-breadcrumb [pageName]="'Stars'"></app-breadcrumb>
+
+<div class="container table-div">
+  <div class="row">
+    <app-star-filter class="star-filter" (filterEvent)="applyFilter($event)"></app-star-filter>
+  </div>
+  <div class="row">
+    <div *ngFor="let star of dataSource.data" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <app-star-card [star]="star"></app-star-card>
+    </div>
+    <mat-paginator (page)="onPageChange($event)" [pageIndex]="currentPaginator.pageNumber"
+  [length]="currentPaginator.totalRecords" [pageSize]="currentPaginator.pageSize"
+  [pageSizeOptions]="[5,10,20,50,100]" showFirstLastButtons
+  aria-label="Select page of talents">
+    </mat-paginator>
+  </div>
+</div>

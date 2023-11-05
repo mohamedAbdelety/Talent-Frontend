@@ -1,0 +1,8 @@
+<h4>{{contract.name}}</h4>
+<p>{{contract.description}}</p>
+<section>
+  <div *ngFor="let p of data; let i = index" class="mb-3">
+    <img [src]="getImgSrc(i)" alt="image">
+    <span>{{p.name}}</span>
+  </div>
+</section>

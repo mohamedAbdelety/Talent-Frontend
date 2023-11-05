@@ -1,0 +1,19 @@
+.profile-header{
+  margin-bottom: 1rem;
+}
+h5{
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+.statistics{
+  font-size: 1.1rem;
+}
+img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}

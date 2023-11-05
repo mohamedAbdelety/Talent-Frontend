@@ -1,0 +1,24 @@
+<app-breadcrumb [pageName]="'Look & Listen'"></app-breadcrumb>
+
+<div class="container table-div">
+  <div class="row">
+    <app-talent-filter class="talent-filter" (filterEvent)="applyFilter($event)"></app-talent-filter>
+  </div>
+  <div class="row">
+    <div *ngFor="let talent of dataSource.data" class="col-md-3 talent" (click)="onView(talent)">
+      <div>
+        <img [src]="getImgUrl(talent.img)">
+      </div>
+      <p class="talent-name">{{talent.name}}</p>
+    </div>
+  </div>
+
+  <mat-paginator (page)="onPageChange($event)" [pageIndex]="currentPaginator.pageNumber"
+  [length]="currentPaginator.totalRecords" [pageSize]="currentPaginator.pageSize"
+  [pageSizeOptions]="[5,10,20,50,100]" showFirstLastButtons
+  aria-label="Select page of talents">
+  </mat-paginator>
+
+
+
+</div>
